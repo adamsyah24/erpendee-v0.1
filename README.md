@@ -1,24 +1,6 @@
-![ERPSAAS create account](https://user-images.githubusercontent.com/104294090/204077432-5431ab48-d0ba-448c-99f3-1fe2c8e8cfb8.png)
-![ERPSAAS create account 2](https://user-images.githubusercontent.com/104294090/204077431-0c47d44f-9e32-484e-93b0-adbf258c0f5a.png)
-![ERPSAAS Profile New](https://user-images.githubusercontent.com/104294090/204077433-9121b495-033c-45d0-8fce-2d1903b67670.png)
-![ERPSAAS users](https://user-images.githubusercontent.com/104294090/204077434-ddae02ed-91ad-4310-9a8f-9a4b3147b5c2.png)
-![10](https://user-images.githubusercontent.com/104294090/198823691-dd503f53-0ff0-4c24-b8f6-5c6f4f03c32a.png)
-![11](https://user-images.githubusercontent.com/104294090/198823738-48abf5de-e5ff-4bd7-9ecd-8eeafa24ed2d.png)
-![13](https://user-images.githubusercontent.com/104294090/198823891-4153e2fe-d516-4ee8-bd8f-e78c97acd316.png)
-![CompaniesPageGithub1](https://user-images.githubusercontent.com/104294090/193767442-13fec3f6-fd24-4057-87b2-5d3352d42af4.png)
-![DepartmentsPageGithub1](https://user-images.githubusercontent.com/104294090/193767444-218ff1b4-8eb6-4b4e-84be-72f040601052.png)
-![EmployeesPageGithub1](https://user-images.githubusercontent.com/104294090/193767445-3207f1fc-e79a-42a3-99e8-93e645def04b.png)
-![BanksPageGithub1](https://user-images.githubusercontent.com/104294090/193767439-eca66f6e-23d6-443e-bd09-f2d2fb92dc9b.png)
-![AccountsPageGithub1](https://user-images.githubusercontent.com/104294090/193767436-0bff8d27-03e9-4c06-81b6-b9c90eb69919.png)
-![CardsPageGithub1](https://user-images.githubusercontent.com/104294090/193767440-6da9c416-d227-489f-959d-e3ec2d7be17a.png)
-![IncomesTransactionPageGithub1](https://user-images.githubusercontent.com/104294090/193767450-a6b19f9c-e9bd-4b41-83ed-2aeec5b8be0a.png)
-![ExpensesTransactionPage1](https://user-images.githubusercontent.com/104294090/193767448-00fb0433-6d97-4480-a6c6-0e64b156b45b.png)
-![RevenueAccountPage1](https://user-images.githubusercontent.com/104294090/193767451-9d6d02b3-8041-4154-84a1-3e0a2a7d2398.png)
-![ExpensesAccountPage1](https://user-images.githubusercontent.com/104294090/193767446-67bebb68-7fcb-4085-8d8e-90e0179a664c.png)
+# Endee ERP
 
-# ERPSAAS
-
-### An ERP Software System using Filament: Currently a WIP
+### An ERP Software System using Filament: Currently a WIP (for ENDEE COMMUNICATION)
 
 ## Installation
 
