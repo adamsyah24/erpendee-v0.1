@@ -15,6 +15,7 @@ class Product extends Model
         'price'
     ];
 
+
     public function pOrder()
     {
         return $this->hasOne(Order::class, 'product_id');

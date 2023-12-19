@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>{{ $title }}</title>
     @vite('resources/css/app.css')
     {{--  <link rel="stylesheet" href="{{asset('public/css/')}}/rtl/bootstrap.min.css"/>  --}}
 

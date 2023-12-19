@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Pages\OrderWidgets;
+namespace App\Filament\Pages\MediaOrderWidgets;
 
-use App\Models\Order;
+use App\Models\MediaOrder;
 use App\Models\Product;
 use App\Models\Brand;
 use Filament\Forms;
@@ -12,7 +12,7 @@ use Filament\Widgets\TableWidget as PageWidget;
 use Illuminate\Database\Eloquent\Builder;
 
 
-class Orders extends PageWidget
+class MediaOrders extends PageWidget
 {
     protected int|string|array $columnSpan = [
         'md' => 2,
@@ -21,7 +21,7 @@ class Orders extends PageWidget
 
     protected function getTableQuery(): Builder
     {
-        return Order::query();
+        return MediaOrder::query();
     }
 
     protected function getTableColumns(): array
@@ -51,7 +51,7 @@ class Orders extends PageWidget
                 Tables\Actions\DeleteAction::make(),
                 Action::make('Download Pdf')
                     ->icon('heroicon-o-document-download')
-                    ->url(fn (Order $record) => route('order.pdf.download', $record))
+                    ->url(fn (MediaOrder $record) => route('order.pdf.download', $record))
                     ->openUrlInNewTab(),
 
                 // Action::make('Preview')

@@ -11,7 +11,7 @@ class Clients extends Page
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationGroup = 'Client Management';
+    protected static ?string $navigationGroup = 'Client and Vendor Management';
 
     protected static string $view = 'filament.pages.client';
 

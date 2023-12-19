@@ -10,6 +10,8 @@ class Orders extends Page
 
     protected static string $view = 'filament.pages.orders';
 
+    protected static ?string $title = 'Quotation';
+
     // protected static ?int $navigationSort = -2;
 
     // protected static ?string $navigationGroup = 'Client Management';
