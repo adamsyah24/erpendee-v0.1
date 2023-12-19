@@ -7,13 +7,13 @@
 1. Git clone:
 
 ```bash
-git clone https://github.com/andrewdwallo/erpsaas.git
+git clone https://github.com/adamsyah24/erpendee-v0.1.git
 ```
 
 2. Cd into erpsaas directory
 
 ```bash
-cd erpsaas
+cd erpendee-v0-1.git
 ```
 
 3. Install via composer: You will get an error that vite manifest cannot be found, just keep following instructions.
@@ -98,8 +98,4 @@ Create Income & Expense Transaction(s) for Your Card(s)
 Enjoy!
 ```
 
-## Contributing
-Please make suggestions if you don't want to contribute.
-I plan on making this a full fledged ERP System with more than an accounting Module.
-I plan on integrating Plaid for accounting automation in the future..
-Please fork this repo and submit pull requests if you want to contribute!
+credit to : <a>https://github.com/andrewdwallo</a>
