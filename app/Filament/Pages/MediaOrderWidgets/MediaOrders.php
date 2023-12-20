@@ -3,6 +3,7 @@
 namespace App\Filament\Pages\MediaOrderWidgets;
 
 use App\Models\MediaOrder;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Brand;
 use Filament\Forms;
@@ -18,6 +19,16 @@ class MediaOrders extends PageWidget
         'md' => 2,
         'xl' => 3,
     ];
+    // protected function getTableColumns(): array
+    // {
+    //     return [
+    //         Tables\Columns\TextColumn::make('id')->sortable()->searchable(),
+    //         Tables\Columns\TextColumn::make('order_no')->sortable()->searchable(),
+    //         Tables\Columns\TextColumn::make('order_series')->sortable()->searchable(),
+    //         Tables\Columns\TextColumn::make('created_at')->sortable()->searchable(),            // Add more columns as needed
+    //     ];
+    // }
+
 
     protected function getTableQuery(): Builder
     {

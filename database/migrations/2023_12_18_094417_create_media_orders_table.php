@@ -15,20 +15,8 @@ return new class extends Migration
     {
         Schema::create('media_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_no')->unique();
-            $table->string('order_series');
-            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
-            $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete();
-            // $table->foreignId('product_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('status_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('media_id')->constrained()->cascadeOnDelete();
-            $table->string('project')->nullable();
-            $table->date('period_start')->nullable();
-            $table->date('period_end')->nullable();
-            $table->date('prepared')->nullable();
-            $table->text('revision')->nullable();
-            $table->date('date_revision')->nullable();
-            $table->integer('tax')->nullable();
+            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
+            $table->string('mo_series_number');
             $table->timestamps();
         });
     }

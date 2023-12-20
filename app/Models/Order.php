@@ -25,6 +25,11 @@ class Order extends Model
         'tax',
     ];
 
+    public function mediaOrder()
+    {
+        return $this->belongsTo(MediaOrder::class, 'order_no');
+    }
+
     public function clientsO()
     {
         return $this->belongsTo(Client::class, 'client_id');

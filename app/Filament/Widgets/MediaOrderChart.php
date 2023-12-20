@@ -2,19 +2,21 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Widgets\LineChartWidget;
+use App\Models\Media;
+use Filament\Widgets\BarChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use App\Models\MediaOrder;
+use App\Models\Order;
 
-class MediaOrderChart extends LineChartWidget
+class MediaOrderChart extends BarChartWidget
 {
-    protected static ?string $heading = 'Media Order Made Chart';
+    protected static ?string $heading = 'Approved Quotations Chart';
 
 
     protected function getData(): array
     {
-        $data = Trend::model(MediaOrder::class)
+        $data = Trend::query(Order::query()->where('status_id', '1'))
         ->between(
             start: now()->startOfMonth(),
             end: now()->endOfYear(),
@@ -25,7 +27,7 @@ class MediaOrderChart extends LineChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Order Made',
+                    'label' => 'Approved Quotations',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],

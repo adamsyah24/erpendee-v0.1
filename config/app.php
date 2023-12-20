@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'ERP Endee 1.0'),
+    'version' => env('APP_VERSION', '1.0.0'),
 
     /*
     |--------------------------------------------------------------------------

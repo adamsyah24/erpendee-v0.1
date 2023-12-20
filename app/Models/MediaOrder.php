@@ -24,4 +24,9 @@ class MediaOrder extends Model
         'date_revision',
         'tax',
     ];
+
+    public function quotationM()
+    {
+        return $this->hasMany(Order::class, 'order_no');
+    }
 }
