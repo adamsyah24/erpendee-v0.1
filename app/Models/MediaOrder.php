@@ -10,23 +10,21 @@ class MediaOrder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_no',
-        'order_series',
-        'client_id',
-        'brand_id',
-        'media_id',
-        'status_id',
-        'project',
-        'period_start',
-        'period_end',
-        'prepared',
-        'revision',
-        'date_revision',
-        'tax',
+        'mo_series_number',
     ];
 
     public function quotationM()
     {
         return $this->hasMany(Order::class, 'order_no');
+    }
+
+    public function taxMo()
+    {
+        return $this->hasMany(Tax::class, 'order_no');
+    }
+
+    public function afMo()
+    {
+        return $this->hasMany(AgencyFee::class, 'order_no');
     }
 }

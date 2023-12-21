@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('media_orders', function (Blueprint $table) {
+        Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
-            $table->string('mo_series_number');
+            $table->integer('vat_tax')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media_orders');
+        Schema::dropIfExists('taxes');
     }
 };

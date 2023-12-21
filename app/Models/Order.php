@@ -60,4 +60,13 @@ class Order extends Model
         return $this->hasMany(QuotationProduct::class, 'order_id');
     }
 
+    public function taxO()
+    {
+        return $this->hasMany(Tax::class, 'order_no');
+    }
+
+    public function afO()
+    {
+        return $this->hasMany(AgencyFee::class, 'order_no');
+    }
 }

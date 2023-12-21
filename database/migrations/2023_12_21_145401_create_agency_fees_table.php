@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('agency_fees', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('logo')->nullable();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->integer('agency_fee')->nullable();
             $table->timestamps();
         });
     }
@@ -29,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('agency_fees');
     }
 };
