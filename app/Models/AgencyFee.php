@@ -15,11 +15,11 @@ class AgencyFee extends Model
 
     public function moAf()
     {
-        return $this->belongsTo(MediaOrder::class, 'agency_fee_id');
+        return $this->hasMany(MediaOrder::class, 'agency_fee_id');
     }
 
     public function quotationAf()
     {
-        return $this->belongsTo(MediaOrder::class, 'agency_fee_id');
+        return $this->hasMany(Order::class, 'agency_fee_id');
     }
 }

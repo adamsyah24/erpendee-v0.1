@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->hasMany(QuotationProduct::class, 'product_id');
     }
+
+    public function moProduct()
+    {
+        return $this->hasMany(MediaOrder::class, 'product_id');
+    }
 }

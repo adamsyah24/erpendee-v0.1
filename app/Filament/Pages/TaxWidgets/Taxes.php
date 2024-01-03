@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Pages\AgencyFeeWidgets;
+namespace App\Filament\Pages\TaxWidgets;
 
-use App\Models\Account;
-use App\Models\AgencyFee;
+use App\Models\Tax;
 use App\Models\Bank;
 use App\Models\Company;
 use App\Models\Department;
@@ -13,7 +12,7 @@ use Filament\Widgets\TableWidget as PageWidget;
 use Illuminate\Database\Eloquent\Builder;
 
 
-class AgencyFees extends PageWidget
+class Taxes extends PageWidget
 {
     protected int|string|array $columnSpan = [
         'md' => 2,
@@ -22,14 +21,14 @@ class AgencyFees extends PageWidget
 
     protected function getTableQuery(): Builder
     {
-        return AgencyFee::query();
+        return Tax::query();
     }
 
     protected function getTableColumns(): array
     {
         return [
             Tables\Columns\TextColumn::make('id'),
-            Tables\Columns\TextColumn::make('agency_fee')->label('Agency Fee'),
+            Tables\Columns\TextColumn::make('vat_tax')->label('VAT Tax'),
         ];
     }
     protected function getTableActions(): array
@@ -39,12 +38,12 @@ class AgencyFees extends PageWidget
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ViewAction::make()
                 ->form([
-                    Forms\Components\TextInput::make('agency_fee')->maxLength(100),
+                    Forms\Components\TextInput::make('vat_tax')->maxLength(100),
                 ]),
 
                 Tables\Actions\EditAction::make()
                 ->form([
-                    Forms\Components\TextInput::make('agency_fee')->integer()->maxLength(100)->autofocus()->required(),
+                    Forms\Components\TextInput::make('vat_tax')->integer()->maxLength(100)->autofocus()->required(),
                 ]),
             ]),
         ];
@@ -55,7 +54,7 @@ class AgencyFees extends PageWidget
         return [
             Tables\Actions\CreateAction::make()
             ->form([
-                Forms\Components\TextInput::make('agency_fee')->integer()->required()->maxLength(100)->autofocus(),
+                Forms\Components\TextInput::make('vat_tax')->label('VAT Tax')->integer()->required()->maxLength(100)->autofocus(),
             ]),
         ];
     }

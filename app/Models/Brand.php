@@ -16,7 +16,12 @@ class Brand extends Model
 
     public function oBrand()
     {
-        return $this->hasOne(Order::class, 'brand_id');
+        return $this->hasMany(Order::class, 'brand_id');
+    }
+
+    public function moBrand()
+    {
+        return $this->hasMany(MediaOrder::class, 'brand_id');
     }
 
     protected $fillable = [

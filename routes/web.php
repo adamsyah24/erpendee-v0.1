@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PDFControllerMo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,5 @@ Route::get('/', function () {
 
 // Route::get('/{record}/pdf/download', [DownloadPdfController::class, 'download'])->name('order.pdf.download');
 Route::get('/{record}/pdf/download', [PDFController::class, 'generatePDF'])->name('order.pdf.download');
+Route::get('/{record}/pdf/download2', [PDFControllerMo::class, 'generatePDF'])->name('mediaorder.pdf.download');
 // Route::get('myPDF', [PDFController::class, 'previewPDF'])->name('preview.pdf');

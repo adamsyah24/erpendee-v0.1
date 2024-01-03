@@ -10,6 +10,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Widgets\TableWidget as PageWidget;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\FileUpload;
 
 
 class Orders extends PageWidget
@@ -63,6 +64,20 @@ class Orders extends PageWidget
                     ->form([
                         Forms\Components\Card::make()
                             ->schema([
+                                Forms\Components\FileUpload::make('file_path')
+                                    ->disk('public')
+                                    ->visibility('public')
+                                    ->label('View Uploaded File')
+                                    ->imagePreviewHeight('200')
+                                    ->enableDownload()
+                                    ->enableOpen()
+                                // FileUpload::make('file_path')
+                                //     ->disk('public')
+                                //     ->directory('quotations')
+                                //     ->visibility('public')
+                            ]),
+                        Forms\Components\Card::make()
+                            ->schema([
                                 Forms\Components\Card::make()
                                     ->schema([
                                         Forms\Components\TextInput::make('order_no')->label('Order No.')->unique()->numeric(),
@@ -87,7 +102,7 @@ class Orders extends PageWidget
                                 Forms\Components\DatePicker::make('prepared'),
                                 Forms\Components\TextInput::make('revision'),
                                 Forms\Components\DatePicker::make('date_revision')->label('Date Revision'),
-                                Forms\Components\TextInput::make('tax')->numeric()->required(),
+                                Forms\Components\Select::make('tax_id')->relationship('taxOrder', 'vat_tax')->required(),
                             ])
                             ->columns([
                                 'sm' => 2
@@ -153,7 +168,7 @@ class Orders extends PageWidget
                                 Forms\Components\DatePicker::make('prepared'),
                                 Forms\Components\TextInput::make('revision'),
                                 Forms\Components\DatePicker::make('date_revision')->label('Date Revision'),
-                                Forms\Components\TextInput::make('tax')->numeric()->required(),
+                                Forms\Components\Select::make('tax_id')->relationship('taxOrder', 'vat_tax')->required(),
                             ])
                             ->columns([
                                 'sm' => 2
@@ -198,6 +213,93 @@ class Orders extends PageWidget
     protected function getTableHeaderActions(): array
     {
         return [
+            Action::make('upload')
+                ->label('Upload Quotation')
+                //             ->form([
+                //                 Forms\Components\FileUpload::make('file')
+                //                     ->label('Upload File')
+                //                     ->disk('public')
+                //                     ->directory('quotations')
+                //                     ->visibility('public'),
+                //             ])
+                //             ->action(function (array $data) {
+                //                 $order = new Order();
+
+                //                 if (isset($data['file'])) {
+                //                     $file = $data['file']; // UploadedFile instance
+                //                     $order->file_path = $file->store('quotations', 'public');
+                //                 }
+
+                //                 $order->order_no = $data['order_no'];
+                //                 $order->order_series = $data['order_series'];
+                //                 $order->client_id = $data['client_id'];
+                //                 $order->brand_id = $data['brand_id'];
+                //                 $order->media_id = $data['media_id'];
+                //                 // ... other order properties
+
+                //                 $order->save();
+
+                //                 $this->notify('success', 'Quotation uploaded successfully.');
+                //             })
+                ->action(function (array $data) {
+                    $order = new Order();
+
+                    // if (isset($data['file_path'])) {
+                    //     $file_path = $data['file_path']; // UploadedFile instance
+                    //     $order->file_path = $file_path;
+                    // }
+
+                    $order->file_path = $data['file_path']; // Assuming 'order_no' might be optional
+                    $order->order_no = $data['order_no']; // Assuming 'order_no' might be optional
+                    $order->order_series = $data['order_series'];
+                    $order->client_id = $data['client_id'];
+                    $order->brand_id = $data['brand_id'];
+                    $order->media_id = $data['media_id'];
+                    $order->status_id = $data['status_id'];
+                    $order->tax_id = $data['tax_id'];
+
+                    $order->save();
+                })
+                ->form([
+                    Forms\Components\Card::make()
+                        ->schema([
+                            FileUpload::make('file_path')
+                                ->disk('public')
+                                ->directory('quotations')
+                                ->visibility('public')
+                                ->storeFileNamesIn('file_path' . 'attachment_file_names')
+                                ->preserveFilenames()
+
+                        ]),
+                    Forms\Components\Card::make()
+                        ->schema([
+                            Forms\Components\Card::make()
+                                ->schema([
+                                    Forms\Components\TextInput::make('order_no')->label('Order No.')->unique()->numeric(),
+                                    Forms\Components\TextInput::make('order_series')->label('Order Series'),
+                                ])
+                                ->columns([
+                                    'sm' => 2
+                                ]),
+                            Forms\Components\Select::make('client_id')->relationship('clientsO', 'client_name')->required()->label('Client Name')->reactive(),
+                            Forms\Components\Select::make('brand_id')->relationship('brandsO', 'brand_name')->required()->label('Brand Name')
+                                ->options(function (callable $get) {
+                                    $clientID = $get('client_id');
+                                    if ($clientID) {
+                                        return Brand::where('client_id', $clientID)->pluck('brand_name', 'id')->toArray();
+                                    }
+                                }),
+                            Forms\Components\Select::make('media_id')->relationship('mediaO', 'media_name')->required()->label('Media'),
+                            Forms\Components\Select::make('status_id')->relationship('statusO', 'status')->label('Status'),
+                            Forms\Components\Select::make('tax_id')->relationship('taxOrder', 'vat_tax')->required(),
+
+                            // Forms\Components\Select::make('product_id')->relationship('productsO', 'product_name')->label('Product'),
+                        ])
+                        ->columns([
+                            'sm' => 2
+                        ]),
+                ]),
+
             Tables\Actions\CreateAction::make()
                 ->label('Add New Quotation')
                 ->form([
@@ -229,7 +331,7 @@ class Orders extends PageWidget
                             Forms\Components\DatePicker::make('prepared'),
                             Forms\Components\TextInput::make('revision'),
                             Forms\Components\DatePicker::make('date_revision')->label('Date Revision'),
-                            Forms\Components\TextInput::make('tax')->numeric()->required(),
+                            Forms\Components\Select::make('tax_id')->relationship('taxOrder', 'vat_tax')->required(),
                         ])
                         ->columns([
                             'sm' => 2

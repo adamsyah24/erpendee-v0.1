@@ -27,7 +27,7 @@ class PDFController extends Controller
             'prepared' => $record->prepared,
             'revision' => $record->revision,
             'daterevision' => $record->date_revision,
-            'tax' => $record->tax,
+            'tax' => $record->taxOrder->vat_tax,
             'brands' => $record->brandsO->brand_name,
             'clients' => $record->clientsO->client_name,
             'medias' => $record->mediaO->media_name,

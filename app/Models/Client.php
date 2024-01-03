@@ -16,9 +16,12 @@ class Client extends Model
 
     public function oClient()
     {
-        return $this->hasOne(Order::class, 'client_id');
+        return $this->hasMany(Order::class, 'client_id');
     }
-
+    public function moClient()
+    {
+        return $this->hasMany(MediaOrder::class, 'client_id');
+    }
     protected $fillable = [
         'client_name',
         'client_slug',

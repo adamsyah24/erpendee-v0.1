@@ -4,7 +4,7 @@ namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
 
-class AgencyFee extends Page
+class AgencyFees extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 

@@ -10,11 +10,15 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_id',
         'order_no',
         'order_series',
+        'media_order_id',
         'client_id',
         'brand_id',
         'media_id',
+        'tax_id',
+        'agency_fee_id',
         'status_id',
         'project',
         'period_start',
@@ -23,11 +27,12 @@ class Order extends Model
         'revision',
         'date_revision',
         'tax',
+        'file_path',
     ];
 
     public function mediaOrder()
     {
-        return $this->belongsTo(MediaOrder::class, 'order_no');
+        return $this->hasMany(MediaOrder::class, 'order_id');
     }
 
     public function clientsO()
@@ -60,13 +65,13 @@ class Order extends Model
         return $this->hasMany(QuotationProduct::class, 'order_id');
     }
 
-    public function taxO()
+    public function taxOrder()
     {
-        return $this->hasMany(Tax::class, 'order_no');
+        return $this->belongsTo(Tax::class, 'tax_id');
     }
 
     public function afO()
     {
-        return $this->hasMany(AgencyFee::class, 'order_no');
+        return $this->belongsTo(AgencyFee::class, 'agency_fee_id');
     }
 }

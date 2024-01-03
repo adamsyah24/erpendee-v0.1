@@ -17,4 +17,9 @@ class Media extends Model
     {
         return $this->hasMany(Order::class, 'media_id');
     }
+
+    public function moMedia()
+    {
+        return $this->hasMany(MediaOrder::class, 'media_id');
+    }
 }

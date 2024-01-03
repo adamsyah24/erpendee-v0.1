@@ -4,7 +4,7 @@ namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
 
-class Tax extends Page
+class Taxes extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
@@ -17,7 +17,7 @@ class Tax extends Page
     protected function getHeaderWidgets(): array
     {
         return [
-            TaxWidgets\Taxs::class,
+            TaxWidgets\Taxes::class,
         ];
     }
 }
